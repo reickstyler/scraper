@@ -1,0 +1,14 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "Scrape wikipedia for COVID data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Reicks",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^5.5.0"
+  }
+}
