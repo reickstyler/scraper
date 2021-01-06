@@ -1,11 +1,12 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs')
 
-const scrap = async () =>{
+const scrape = async () =>{
     const browser = await puppeteer.launch({headless : false}); //browser initiate
     const page = await browser.newPage();  // opening a new blank page
     await page.goto('https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory', {waitUntil : 'domcontentloaded'}) // navigate to url and wait until page loads completely
 
+    // Selected table by aria-label instead of div id
     const recordList = await page.$$eval('[aria-label="COVID-19 pandemic by country and territory table"] table#thetable tbody tr',(trows)=>{
         let rowList = []    
         trows.forEach(row => {
@@ -22,6 +23,7 @@ const scrap = async () =>{
         return rowList;
     })
     console.log(recordList)
+    // Commented out screen shot here
     // await page.screenshot({ path: 'screenshots/wikipedia.png' }); //screenshot 
     browser.close();
 
@@ -31,4 +33,4 @@ const scrap = async () =>{
         else{console.log('Saved Successfully!')}
     })
 };
-scrap();
+scrape();
